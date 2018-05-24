@@ -54,7 +54,10 @@ class MediaController extends Controller
             ->orWhereHas('categories', function ($q) use ($search) {
                 $q->where('categories.title', 'ilike', '%' . $search . '%');
             })
-            ->get();
+            ->get()
+            ->sortByDesc(function($media) {
+                return $media->subscribers->count();
+            });
 
         return view('media.media')->with(compact('media', 'search'));
     }
