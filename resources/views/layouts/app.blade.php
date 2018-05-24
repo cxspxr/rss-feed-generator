@@ -102,6 +102,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <a href="https://github.com/caspermadara/curse" id="octocat" target="_blank">
+            <img src="{{ asset('img/git.png') }}" alt="">
+        </a>
+
     </div>
 </body>
 </html>
