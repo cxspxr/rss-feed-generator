@@ -8,7 +8,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>{{ $media->title }}</h1>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h1>{{ $media->title }}</h1>
+
+                @include('partials.subscription')
+            </div>
             @foreach($articles as $article)
                 @auth
                     <form

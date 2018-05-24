@@ -11,29 +11,81 @@ class MediaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Media::class)->create([
+        App\Media::create([
             'rss' => 'https://sharij.net/feed',
             'title' => 'Sharij.net'
         ])
         ->categories()
         ->attach(factory(App\Category::class)
-        ->create([
-            'title' => 'Политика'
-        ]));
+            ->create([
+                'title' => 'Политика'
+            ])
+        );
 
-        factory(App\Media::class)->create([
+        App\Media::create([
             'rss' => 'http://fakty.ua/rss_feed/ukraina',
-            'title' => 'Fakty'
+            'title' => 'Fakty Ukraine'
         ])
         ->categories()
         ->attach(factory(App\Category::class)
-        ->create([
-            'title' => 'Украина'
-        ]));
+            ->create([
+                'title' => 'Украина'
+            ])
+        );
 
+        App\Media::create([
+            'rss' => 'http://fakty.ua/rss_feed/world',
+            'title' => 'Fakty World'
+        ])
+        ->categories()
+        ->attach(factory(App\Category::class)
+            ->create([
+                'title' => 'Мир'
+            ])
+        );
 
-        factory(App\Media::class, 2)->create()->each(function ($media) {
-            $media->categories()->attach(factory(App\Category::class, 5)->create());
-        });
+        App\Media::create([
+            'rss' => 'http://fakty.ua/rss_feed/politics',
+            'title' => 'Fakty Politics'
+        ])
+        ->categories()
+        ->attach(factory(App\Category::class)
+            ->create([
+                'title' => 'Политика'
+            ])
+        );
+
+        App\Media::create([
+            'rss' => 'http://fakty.ua/rss_feed/health',
+            'title' => 'Fakty Health'
+        ])
+        ->categories()
+        ->attach(factory(App\Category::class)
+            ->create([
+                'title' => 'Здоровье'
+            ])
+        );
+
+        App\Media::create([
+            'rss' => 'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
+            'title' => 'NY Times'
+        ])
+        ->categories()
+        ->attach(factory(App\Category::class)
+            ->create([
+                'title' => 'World News'
+            ])
+        );
+
+        App\Media::create([
+            'rss' => 'http://feeds.washingtonpost.com/rss/rss_election-2012',
+            'title' => 'Washington Post'
+        ])
+        ->categories()
+        ->attach(factory(App\Category::class)
+            ->create([
+                'title' => 'Politics'
+            ])
+        );
     }
 }

@@ -26,6 +26,8 @@ Route::get('auth/login/{provider}', 'SocialAuthController@handleLogin')
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback')
     ->name('social-auth-callback');
 
+Route::get('search', 'MediaController@search')->name('search');
+
 Route::group([
     'prefix' => 'media',
     'as' => 'media.'
@@ -43,4 +45,12 @@ Route::group([
 
     Route::get('/unsubscribe/{media?}', 'MediaController@unsubscribe')->name('unsubscribe');
 
+    Route::view('/add', 'media.add')->name('add');
+
+    Route::post('/add', 'MediaController@add')->name('create');
+
 });
+
+Route::view('account', 'account')->name('account');
+
+Route::post('update-account', 'UserController@update')->name('update-account');

@@ -8,19 +8,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @foreach($media as $m)
+            @forelse($media as $m)
                 <div class="nostyle card" style="display:block; margin-bottom: 10px;">
-                    <div class="card-header">
+                    <div class="card-header" style="display:flex; justify-content: space-between; align-items: center">
                         <a href="{{ route('media.feed', $m) }}">{{ $m->title }}</a>
-                        @if($user->subscribedTo($m))
-                            <a href="{{ route('media.unsubscribe', $m) }}" class="btn btn-sm float-right btn-secondary unsubscribe">
-                                Unsubscribe
-                            </a>
-                        @else
-                            <a href="{{ route('media.subscribe', $m) }}" class="btn btn-sm btn-info float-right subscribe">
-                                Subscribe
-                            </a>
-                        @endif
+                        @include('partials.subscription', [
+                            'media' => $m
+                        ])
                     </div>
                     <ul class="list-group list-group-flush">
                         @foreach($m->categories as $category)
@@ -33,7 +27,13 @@
                         </li>
                     </ul>
                 </div>
-            @endforeach
+            @empty
+                <div class="card">
+                    <div class="card-body">
+                        There are no media resources yet.
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
 </div>

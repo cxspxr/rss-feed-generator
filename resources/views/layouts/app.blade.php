@@ -44,6 +44,10 @@
 
                     </ul>
 
+                    <form class="search" action="{{ route('search') }}" method="get">
+                        <input name="q" type="text" value="{{ isset($search) ? $search : '' }}" placeholder="Let's find out..." class="form-control search">
+                        <button class="btn btn-xsm btn-dark" type="submit">Go</button>
+                    </form>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -58,6 +62,11 @@
                                     Home
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('media.index') }}" class="nav-link">
+                                    Media
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -65,7 +74,13 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a href="{{ route('media.suggestions') }}" class="dropdown-item">
-                                        Suggestions
+                                        What to read...
+                                    </a>
+                                    <a href="{{ route('media.add') }}" class="dropdown-item">
+                                        Add a media
+                                    </a>
+                                    <a href="{{ route('account') }}" class="dropdown-item">
+                                        Edit an account
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

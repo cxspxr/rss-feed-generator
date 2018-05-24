@@ -5,15 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Media;
 use App\Article;
+use App\Category;
 use Auth;
 use Feeds;
 use App\Http\Requests\ReadArticleRequest;
+use App\Http\Requests\MediaRequest;
 
 class MediaController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->only(['read', 'subscribe', 'unsubscribe']);
+    }
+
+    public function add(MediaRequest $request)
+    {
+        $media = Media::create($request->only('title', 'rss'));
+        $string = preg_replace('/\s+/', '', $request->categories);
+        $categories = explode(',', $string);
+
+        foreach ($categories as $category) {
+            $media->categories()->sync(Category::firstOrCreate([
+                'title' => $category
+            ]), false);
+        }
+
+        $media->subscribers()->sync(Auth::id(), false);
+
+        return redirect()->route('feed');
     }
 
     public function index()
@@ -25,6 +44,19 @@ class MediaController extends Controller
             });
 
         return view('media.media')->with(compact('media'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->q;
+        $media = Media::with('subscribers', 'categories')
+            ->where('title', 'ilike', '%' . $search . '%')
+            ->orWhereHas('categories', function ($q) use ($search) {
+                $q->where('categories.title', 'ilike', '%' . $search . '%');
+            })
+            ->get();
+
+        return view('media.media')->with(compact('media', 'search'));
     }
 
     public function feed(Media $media)
@@ -53,7 +85,7 @@ class MediaController extends Controller
 
         foreach($interests as $interest) {
             $media = $media->orWhereHas('categories', function ($query) use ($interest) {
-                $query->where('title', 'like', '%' . $interest->title . '%');
+                $query->where('title', 'ilike', '%' . $interest->title . '%');
             });
         }
 

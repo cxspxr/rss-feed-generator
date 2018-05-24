@@ -124,6 +124,6 @@ class SocialAuthController extends Controller
             $this->createUser($user, $provider);
         }
 
-        return redirect()->route('home');
+        return redirect()->route('feed');
     }
 }

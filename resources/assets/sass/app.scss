@@ -22,3 +22,27 @@ a.nostyle:visited {
     text-decoration: inherit;
     color: inherit;
 }
+
+.search {
+    width: 400px;
+    display: flex;
+    margin-left: auto;
+    align-items:center;
+
+    button {
+        margin-left: 10px;
+    }
+    input {
+        margin-top: 0;
+    }
+
+    @media screen and (max-width: 1000px) {
+        width: 300px;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: auto;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+}

@@ -19,7 +19,9 @@ class Article
         $this->description = $data['description'];
         $this->date = $data['date'];
         $this->link = $data['link'];
-        $this->tags = join(",", $data['tags']);
+        if(isset($data['tags'])) {
+            $this->tags = join(",", $data['tags']);
+        }
     }
 
     public static function create($article) {
@@ -29,7 +31,9 @@ class Article
         $data['description'] = $array['description'][0]['data'];
         $data['date'] = $array['pubDate'][0]['data'];
         $data['link'] = $array['link'][0]['data'];
-        $data['tags'] = array_column($array['category'], 'data');
+        if(isset($array['category'])) {
+            $data['tags'] = array_column($array['category'], 'data');
+        }
 
         return new Article($data);
     }
