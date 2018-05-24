@@ -54,8 +54,8 @@
                         @guest
                         <li><a class="nav-link" href="{{ route('register') }}">{{ __('Signup') }}</a></li>
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('social-auth-login', 'google') }}">Login with Google+</a></li>
-                            <li><a class="nav-link"  href="{{ route('social-auth-login', 'github') }}">Login in with GitHub</a></li>
+                            <li><a class="nav-link" href="{{ route('social-auth-login', 'google') }}">Google+</a></li>
+                            <li><a class="nav-link"  href="{{ route('social-auth-login', 'github') }}">GitHub</a></li>
                         @else
                             <li class="nav-item">
                                 <a href="{{ route('feed') }}" class="nav-link">
