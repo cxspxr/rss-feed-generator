@@ -74,8 +74,8 @@
                             Suggestions
                         </a>
                     @else
-                        <a class="hidden-xs" href="{{ route('register') }}">Signup</a>
-                        <a class="hidden-xs" href="{{ route('login') }}">Login</a>
+                        <a class="hidden-xs-down" href="{{ route('register') }}">Signup</a>
+                        <a class="hidden-xs-down" href="{{ route('login') }}">Login</a>
                         <a href="{{ route('social-auth-login', 'google') }}">Google+</a>
                         <a href="{{ route('social-auth-login', 'github') }}">GitHub</a>
                     @endauth
