@@ -69,7 +69,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ route('feed') }}">Home</a>
+                        <a href="{{ route('feed') }}">Read</a>
                         <a href="{{ route('media.suggestions') }}">
                             Suggestions
                         </a>

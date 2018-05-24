@@ -59,7 +59,7 @@
                         @else
                             <li class="nav-item">
                                 <a href="{{ route('feed') }}" class="nav-link">
-                                    Home
+                                    Read
                                 </a>
                             </li>
                             <li class="nav-item">
