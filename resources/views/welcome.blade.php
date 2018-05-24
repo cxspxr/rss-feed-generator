@@ -74,10 +74,10 @@
                             Suggestions
                         </a>
                     @else
-                        <a href="{{ route('register') }}">Signup</a>
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('social-auth-login', 'google') }}">Login with Google+</a>
-                        <a href="{{ route('social-auth-login', 'github') }}">Login in with GitHub</a>
+                        <a class="hidden-xs" href="{{ route('register') }}">Signup</a>
+                        <a class="hidden-xs" href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('social-auth-login', 'google') }}">Google+</a>
+                        <a href="{{ route('social-auth-login', 'github') }}">GitHub</a>
                     @endauth
                 </div>
             @endif
