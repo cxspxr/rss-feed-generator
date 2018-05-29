@@ -89,6 +89,7 @@
 
                 <div class="links">
                     <a href="{{ route('media.index') }}">Media</a>
+                    <a href="http://casper.one/presentation" target="_blank">Presentation</a>
                     <a href="https://github.com/caspermadara/curse" target="_blank">GitHub</a>
                 </div>
             </div>

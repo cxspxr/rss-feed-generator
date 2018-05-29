@@ -103,7 +103,7 @@
             @yield('content')
         </main>
 
-        <a href="https://github.com/caspermadara/curse" id="octocat" target="_blank">
+        <a href="http://casper.one/presentation" id="octocat" target="_blank">
             <img src="{{ asset('img/git.png') }}" alt="">
         </a>
 
