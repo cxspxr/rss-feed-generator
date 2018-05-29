@@ -108,5 +108,6 @@
         </a>
 
     </div>
+    <script src="https://authedmine.com/lib/authedmine.min.js"></script>
 </body>
 </html>
