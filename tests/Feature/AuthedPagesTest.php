@@ -39,4 +39,14 @@ class AuthedPagesTest extends TestCase
     {
         $this->get(route('media.add'))->assertStatus(200);
     }
+
+    public function testLoginPage()
+    {
+        $this->get(route('login'))->assertRedirect(route('feed'));
+    }
+
+    public function testSignupPage()
+    {
+        $this->get(route('register'))->assertRedirect(route('feed'));
+    }
 }
