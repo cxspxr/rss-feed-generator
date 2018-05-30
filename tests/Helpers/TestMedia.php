@@ -10,7 +10,7 @@ class TestMedia
 {
     public $params = [
         'title' => 'sharij',
-        'rss' => 'sharij.net/rss'
+        'rss' => 'https://sharij.net/rss'
     ];
 
     public function getParams()
