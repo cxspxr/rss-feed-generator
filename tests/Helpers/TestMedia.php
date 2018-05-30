@@ -22,7 +22,9 @@ class TestMedia
     {
         $categories = factory(Category::class, 5)->create();
 
-        return factory(Media::class)->create($params)->categories()
-            ->attach($categories);
+        $media = factory(Media::class)->create($params);
+        $media->categories()->attach($categories);
+
+        return $media;
     }
 }

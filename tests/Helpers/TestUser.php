@@ -23,10 +23,8 @@ class TestUser
 
     public function create($params = [])
     {
-        $media = (new TestMedia)->create();
-
         $user = factory(User::class)->create($params);
-        $user->media()->attach($media);
+        
 
         return $user;
     }
