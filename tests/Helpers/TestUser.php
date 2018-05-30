@@ -12,7 +12,8 @@ class TestUser
     public $params = [
         'name' => 'test',
         'email' => 'test@gmail.com',
-        'password' => Hash::make('password')
+        'password' => 'password',
+        'password_confirmation' => 'password'
     ];
 
     public function getParams()
@@ -22,8 +23,8 @@ class TestUser
 
     public function create($params = [])
     {
-        $media = new TestMedia->create();
-        
+        $media = new TestMedia();
+
         return factory(User::class)->create($params)->media()->attach($media);
     }
 }
