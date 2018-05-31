@@ -33,6 +33,8 @@ Route::group([
     'as' => 'media.'
 ], function () {
 
+    Route::get('/feed/{media}', 'MediaController@feed')->name('feed');
+    
     Route::get('/', 'MediaController@index')->name('index');
 
     Route::post('/read', 'MediaController@read')->name('read');

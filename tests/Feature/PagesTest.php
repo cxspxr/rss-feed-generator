@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Tests\Helpers\TestMedia;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -33,5 +34,13 @@ class PagesTest extends TestCase
         $this->get(route('media.index'))->assertStatus(200)
             ->assertDontSee('Subscribe')
             ->assertDontSee('Unsubscribe');
+    }
+
+    public function testReadMediaPage()
+    {
+        $media = (new TestMedia)->create();
+        $this->get(route('media.feed', $media->id))
+            ->assertSee($media->title)
+            ->assertStatus(200);
     }
 }

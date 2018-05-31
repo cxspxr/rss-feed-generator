@@ -3,7 +3,6 @@ Route::group([
     'prefix' => 'media',
     'as' => 'media.'
 ], function () {
-    Route::get('/feed/{media}', 'MediaController@feed')->name('feed');
 
     Route::get('/suggestions', 'MediaController@suggestions')->name('suggestions');
 
