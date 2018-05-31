@@ -30,6 +30,8 @@ class PagesTest extends TestCase
 
     public function testMediaPage()
     {
-        $this->get(route('media.index'))->assertStatus(200);
+        $this->get(route('media.index'))->assertStatus(200)
+            ->assertDontSee('Subscribe')
+            ->assertDontSee('Unsubscribe');
     }
 }
